@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" property="og:title" content="Expense Tracker" />
+    <meta name="author" content="Sonika Prakash" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="shortcut icon" href="#">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    <title>Expense Tracker</title>
+    <link rel="icon" href="static/images/logo.png" type="image/icon type">
+</head>
+<body>
+    <div class="top">
+        <p>MINT EXPENSE TRACKER</p>
+    </div>
+
+    <div class="about">
+        <h1>
+            <span class="highlight1">Free of cost and fully secure</span> solution for your expenses!
+        </h1>
+        <h3>
+            With my <span class="highlight2">Mint Expense Tracker</span>, manage and keep track of all your monthly expenses on a single platform.
+        </h3>
+        <h3>
+            Flexibly plan your budget and track spending, so you can stay in control and achieve your goals.
+        </h3>
+
+        <div class="login">
+            <form action="/signup" method="post">
+                <img src="static/images/signup_logo.png">
+                <h2 style="text-align: center;">Register</h2>
+                <div class="formerror">
+                    {{msg}}
+                    <br><br>
+                </div>
+                <label>Username</label><br>
+                <input type="text" name="username" required></input>
+                <br><br><br>
+                <label>Email</label><br>
+                <input type="text" name="email" required></input>
+                <br><br><br>
+                <label>Password</label><br>
+                <input type="password" name="password" required></input>
+                <br><br><br>
+                <center>
+                    <button type="submit" class="loginbtn">Register</button>
+                </center>
+                <br>
+                <p>Already have an account? <a href="{{ url_for('home') }}">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center;">
+            <p style="float: left; padding-left: 50px;">Developed by Sonika Prakash with <i class="fa fa-heart"></i></p>
+            <p style="float: right; padding-right: 50px;">
+            &copy 
+            <script>
+                document.write(new Date().getFullYear());
+            </script>
+            | All rights reserved
+        </p>
+        <br><br>
+    </div>
+</body>
+</html>

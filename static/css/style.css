@@ -1,0 +1,114 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    background-color: black;
+    margin: 0;
+    color: white;
+}
+
+.top {
+    background-color: #38425e;
+    text-align: center;
+    color: white;
+    margin: 0;
+    font-size: 30px;
+    padding: 1px;
+    border-bottom: 5px solid rgb(191, 146, 255);
+    font-weight: bold;
+}
+
+.nav {
+    background-color: #252525;
+    border-top: 1px solid #ffe89d;
+    overflow: hidden;
+}
+
+.nav a {
+    text-decoration: none;
+    padding: 15px;
+    float: left;
+    color: #FFC300;
+}
+
+.nav a:hover {
+    color: #ffe89d;
+    transform: scale(1.1);
+}
+
+.highlight1 {
+    color: pink;
+}
+
+.highlight2 {
+    color: rgb(181, 255, 245);
+}
+
+.about {
+    margin: auto;
+    padding: 50px;
+    width: 95%;
+    margin-top: 30px;
+    background-color: #191c24;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.about h1 {
+    color:rgb(191, 146, 255);
+}
+
+.login {
+    margin: auto;
+    padding: 50px;
+    background-color: black;
+    margin-top: 50px;
+    width: 35%;
+    border-radius: 5px;
+}
+
+.login img {
+    width: 20%;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.loginbtn {
+    padding: 10px;
+    background-color: rgb(220, 149, 255);
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.loginbtn:hover {
+    background-color: white;
+    transform: scale(1.2);
+}
+
+.formerror {
+    color: red;
+    font-size: 12px;
+}
+
+.footer {
+	padding: 20px;
+	padding-top: 5px;
+	text-align: center;
+	background-color: #191c24;
+	margin-top: 5%;
+	color: white;
+	font-size: 13px;
+}
+
+.footer i {
+    color: red;
+}
