@@ -25,42 +25,24 @@
     </div>
 
     <div class="about">
-        <h1>
-            <span class="highlight1">Free of cost and fully secure</span> solution for your expenses!
-        </h1>
-        <h3>
-            With my <span class="highlight2">Mint Expense Tracker</span>, manage and keep track of all your monthly expenses on a single platform.
-        </h3>
-        <h3>
-            Flexibly plan your budget and track spending, so you can stay in control and achieve your goals.
-        </h3>
-
         <div class="login">
-            <form action="/signup" method="post">
+            <form action="/login" method="post">
                 <img src="static/images/signup_logo.png">
                 <h2 style="text-align: center;">Register</h2>
                 <div class="formerror">
                     {{msg}}
-                    <br>
-                </div>
-                <div class="formsuccess">
-                    {{successmsg}}
                     <br><br>
                 </div>
                 <label>Username</label><br>
                 <input type="text" name="username" required></input>
                 <br><br><br>
-                <label>Email</label><br>
-                <input type="text" name="email" required></input>
-                <br><br><br>
                 <label>Password</label><br>
                 <input type="password" name="password" required></input>
                 <br><br><br>
                 <center>
-                    <button type="submit" class="loginbtn">Register</button>
+                    <button type="submit" class="loginbtn">Login</button>
                 </center>
                 <br>
-                <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
             </form>
         </div>
     </div>

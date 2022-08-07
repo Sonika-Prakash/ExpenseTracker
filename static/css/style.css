@@ -96,7 +96,12 @@ input {
 
 .formerror {
     color: red;
-    font-size: 12px;
+    font-size: 16px;
+}
+
+.formsuccess {
+    color: green;
+    font-size: 16px;
 }
 
 .footer {
