@@ -61,6 +61,124 @@ body {
     color:rgb(191, 146, 255);
 }
 
+.nav {
+    background-color: #252525;
+    border-top: 1px solid #ffe89d;
+    overflow: hidden;
+}
+
+.nav a {
+    text-decoration: none;
+    padding: 15px;
+    float: left;
+    color: rgb(191, 146, 255);
+}
+
+.heading {
+    margin: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color:#bfff8e;
+}
+
+.transactions {
+    margin: auto;
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 95%;
+    background-color: #191c24;
+    border-radius: 5px;
+}
+
+.transactions-heading {
+    overflow: hidden;
+}
+
+.transactions-heading p {
+    float: left;
+    font-size: 26px;
+    font-weight: bold;
+    color: lightblue;
+}
+
+.transactions-heading img {
+    width: 50px;
+}
+
+.analysis {
+    margin: auto;
+    margin-top: 30px;
+    width: 95%;
+    border-radius: 5px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.leftcolumn {
+    width: 50%;
+    float: left;
+}
+
+.rightcolumn {
+    float: right;
+    width: 50%;
+    padding-left: 30px;
+}
+
+.budget {
+    background-color: #191c24;
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.budget p {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.categorical_expense {
+    background-color: #191c24;
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.categorical_expense p {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.msg {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+table {
+    margin-top: 30px;
+    background-color: #191c24;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+tr {
+    border-bottom: 1px solid black;
+}
+
+.nav a:hover {
+    color: #ffe89d;
+    transform: scale(1.1);
+}
+
 .login {
     margin: auto;
     padding: 50px;

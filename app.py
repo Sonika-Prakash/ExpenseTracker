@@ -1,6 +1,7 @@
-from flask import Flask, render_template, session, request, redirect, url_for
+from flask import Flask, render_template, session, request, redirect, url_for, json
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
+from datetime import date
 
 app = Flask(__name__)
 app.secret_key = 'a'
@@ -16,12 +17,38 @@ def home():
     if not session.get('loggedin'):
         return render_template('signup.html')
     else:
-        return render_template('home.html')
+        cursor = mysql.connection.cursor()
+        months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        labels = json.dumps(["budget", "spent", "remaining"])
+        colors = json.dumps(["pink", "lightblue", "green"])
+        res1 = cursor.execute("SELECT * FROM transactions WHERE username = %s ORDER BY date", (session['username'], ))
+        data1 = cursor.fetchall()
+        currentMonth = months[date.today().month]
+        data2 = 0
+        data3 = 0
+        res2 = cursor.execute("SELECT * FROM monthly_budget WHERE username = %s AND month = %s", (session['username'], currentMonth.lower()))
+        data = cursor.fetchall()
+        if len(data) == 0:
+            data2 = 0
+            data3 = 0
+        else:
+            data2 = data[0][3]
+            data3 = data[0][4]
+        print(data)
+        print(data2)
+        values = json.dumps([data2, data3, data2 - data3])
+        cursor.close()
+        if res1 > 0:
+            return render_template('home.html', data1 = data1, data2 = data2, data3 = data3, labels = labels, values = values)
+        else:
+            msg = "There are no transactions made in this month. Add a transaction."
+            return render_template('home.html', msg = msg)
 
 
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():
     msg = ''
+    successmsg = ''
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
         username = request.form['username']
         password = request.form['password']
@@ -57,7 +84,7 @@ def signup():
                 return render_template('signup.html', msg = msg)
 
             # password is validated, insert the new user data into database
-            cursor.execute("INSERT INTO users(username, email, password) VALUE(%s, %s, %s)", (username, email, password))
+            cursor.execute("INSERT INTO users VALUE(%s, %s, %s)", (username, email, password))
             mysql.connection.commit()
             successmsg = 'You have successfully registered! You can login now.'
             

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" property="og:title" content="Expense Tracker" />
+    <meta name="author" content="Sonika Prakash" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="shortcut icon" href="#">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+    <title>Expense Tracker</title>
+    <link rel="icon" href="static/images/logo.png" type="image/icon type">
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+</head>
+<body>
+    <!--<script src="static/js/home.js"></script>-->
+
+    <div class="top">
+        <p>MINT EXPENSE TRACKER</p>
+    </div>
+
+    <div class="nav">
+        <a href="{{ url_for('home') }}" style="color: #ffe89d;">Transactions</a>
+        <a href="#">Monthly Overview</a>
+        <a href="#">Yearly Overview</a>
+        <a href="#">Reports</a>
+        <a href="{{ url_for('logout') }}" style="float: right;">Logout</a>
+    </div>
+
+    <div class="heading">
+        <p>
+            Expenses in
+            <script>
+                var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                var d = new Date();
+                document.write(monthNames[d.getMonth()]);
+            </script>
+        </p>
+    </div>
+
+    <div class="analysis">
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="budget">
+                    <p>
+                        Budget set for this month: &#8377;{{data2}} <br>
+                        Money spent so far in this month: &#8377;{{data3}}
+                    </p>
+                    <canvas id="chart" width="600" height="400"></canvas>
+                    {% block javascript %}
+                        <script>
+                            labels = JSON.parse("{{ labels | tojson }}")
+	                        data = JSON.parse("{{ data | tojson }}")
+                            console.log(labels)
+
+                        </script>
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="rightcolumn">
+                <div class="categorical_expense">
+                    <p>
+                        Budget set for this month: &#8377;{{data2}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="transactions">
+        <div class="transactions-heading">
+            <p>
+                Transactions
+            </p>
+
+            <div style="float: right; margin-top: 20px;">
+                <form method="post" action="#">
+                    <button type="submit" style="background-color: #191c24; border: none; cursor: pointer;">
+                        <img src="static/images/add.png">
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <table id="transactions-table">
+            <tbody>
+                {% for row in data1 %}    
+                <tr>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                    <td>&#8377;{{row[2]}}</td>
+                    <td>{{row[6]}}</td>
+                    <td>{{row[7]}}</td>
+                    <td><img src="{{row[8]}}" style="width: 40px;"></td>
+                    <!-- <td>
+                        <script>
+                            chooseIcon("{{row[8]}}");
+                        </script>
+                        <i id="credit_debit" class="fa fa-square"></i>
+                    </td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="msg">
+            {{msg}}
+        </div>
+        <br>
+
+        
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center;">
+            <p style="float: left; padding-left: 50px;">Developed by Sonika Prakash with <i class="fa fa-heart"></i></p>
+            <p style="float: right; padding-right: 50px;">
+            &copy 
+            <script>
+                document.write(new Date().getFullYear());
+            </script>
+            | All rights reserved
+        </p>
+        <br><br>
+    </div>
+</body>
+</html>
